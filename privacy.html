@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - SovereignAI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1d1d1f;
+            background: #fff;
+            line-height: 1.7;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+        h1 { font-size: 2em; font-weight: 700; margin-bottom: 4px; }
+        .updated { color: #86868b; margin-bottom: 40px; font-size: 0.9em; }
+        h2 { font-size: 1.15em; font-weight: 600; margin-top: 32px; margin-bottom: 8px; }
+        p { color: #424245; margin-bottom: 12px; }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        li { color: #424245; margin-bottom: 4px; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e5e5; }
+        footer { margin-top: 48px; color: #86868b; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: February 8, 2026</p>
+
+        <h2>Overview</h2>
+        <p>SovereignAI is an iOS client that connects to AI servers you choose. We do not operate any servers, and we do not receive any of your data. This policy explains what data the app handles and where it goes.</p>
+
+        <h2>Data we collect</h2>
+        <p><strong>None.</strong> SovereignAI does not send any data to us. There are no analytics, no telemetry, no crash reporting, and no advertising SDKs.</p>
+
+        <h2>Data stored on your device</h2>
+        <p>The following data is stored locally on your device and never leaves it unless you explicitly configure a server connection:</p>
+        <ul>
+            <li><strong>Chat conversations</strong> &mdash; stored as files in the app's sandboxed Documents directory.</li>
+            <li><strong>API keys and authentication tokens</strong> &mdash; stored in the iOS Keychain (hardware-encrypted).</li>
+            <li><strong>Settings</strong> &mdash; server URL, model preferences, and tool settings stored in UserDefaults.</li>
+        </ul>
+
+        <h2>Data sent to your AI server</h2>
+        <p>When you send a message, the app transmits your conversation to the server endpoint you configured. This may include:</p>
+        <ul>
+            <li>Your messages and the conversation history (within the context length you set)</li>
+            <li>A system prompt</li>
+            <li>Your selected model name and sampling parameters</li>
+            <li>Authentication credentials (API key or token) in request headers</li>
+        </ul>
+        <p>You control which server receives this data. The app supports self-hosted servers (Ollama, vLLM, llama.cpp, etc.) as well as third-party API providers. Review the privacy policy of any third-party provider you connect to.</p>
+
+        <h2>Web search and URL fetching</h2>
+        <p>If you enable the web search tool, the app sends search queries to DuckDuckGo and may fetch content from URLs returned in search results. These features are disabled by default and can be turned off at any time.</p>
+
+        <h2>OIDC authentication</h2>
+        <p>If you configure OpenID Connect authentication, the app communicates with your OIDC provider to obtain and refresh tokens. Tokens are stored in the iOS Keychain.</p>
+
+        <h2>Third-party services</h2>
+        <p>The app includes one third-party library, <a href="https://github.com/appstefan/HighlightSwift">HighlightSwift</a>, used for syntax highlighting. It runs entirely on-device and does not transmit any data.</p>
+
+        <h2>Data deletion</h2>
+        <p>You can delete your data at any time:</p>
+        <ul>
+            <li><strong>Delete individual conversations</strong> from the session list.</li>
+            <li><strong>Reset all settings</strong> from the settings menu, which clears stored credentials, tokens, and preferences.</li>
+            <li><strong>Uninstall the app</strong> to remove all data, including Keychain entries.</li>
+        </ul>
+
+        <h2>Age rating</h2>
+        <p>SovereignAI is rated 17+ because it connects to user-configured AI servers whose responses are not moderated or filtered by the app. The app is not intended for use by anyone under 17.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>Updates will be posted on this page with a revised date.</p>
+
+        <h2>Contact</h2>
+        <p>Questions about this policy can be directed to the <a href="https://github.com/apahim/sovereignai-ios/issues">GitHub issue tracker</a>.</p>
+
+        <div class="back">
+            <a href="index.html">&larr; Back to SovereignAI</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Amador Pahim Segundo. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
