@@ -58,11 +58,11 @@
         </ul>
 
         <h2>Message Actions</h2>
-        <p>Long-press (or right-click on iPad) any message to open the context menu with the following actions:</p>
+        <p>Long-press any message to open its context menu. The following actions are available:</p>
         <ul>
             <li><strong>Copy</strong> &mdash; Copy the message text to the clipboard.</li>
-            <li><strong>Edit</strong> &mdash; Available on your own messages. Edit the text and resend it; the conversation continues from the edited message.</li>
-            <li><strong>Regenerate Response</strong> &mdash; Ask the model to generate a new response to the preceding message.</li>
+            <li><strong>Edit</strong> &mdash; Available on your own messages only. Edit the text and resend it; the conversation continues from the edited message.</li>
+            <li><strong>Regenerate Response</strong> &mdash; Available on your own messages only. Ask the model to generate a new response.</li>
             <li><strong>Delete</strong> &mdash; Remove a single message from the conversation.</li>
             <li><strong>Delete &amp; Following</strong> &mdash; Remove the selected message and every message after it.</li>
         </ul>
@@ -96,16 +96,18 @@
         <p>Open Settings from the session list. Settings are organized into the following groups:</p>
         <ul>
             <li><strong>Server</strong> &mdash; Change your server URL, authentication method, or credentials. Test the connection at any time.</li>
-            <li><strong>Model</strong> &mdash; Select a different model and adjust sampling parameters:
+            <li><strong>Model</strong> &mdash; Select a different model, set a custom system prompt, and adjust sampling parameters under Advanced Settings:
                 <ul>
                     <li><em>Temperature</em> &mdash; Controls randomness. Lower values produce more focused responses; higher values produce more creative ones.</li>
-                    <li><em>Top-p</em> &mdash; Limits the token pool to a cumulative probability threshold.</li>
-                    <li><em>Max tokens</em> &mdash; Sets the maximum length of the model's response.</li>
-                    <li><em>Context length</em> &mdash; Controls how many previous messages are included in each request.</li>
+                    <li><em>Context Window</em> &mdash; How much conversation history to include in each request.</li>
+                    <li><em>Top-p</em> &mdash; Limits word choices to the most likely options.</li>
+                    <li><em>Frequency Penalty</em> &mdash; Reduces repetition by discouraging the model from repeating the same phrases.</li>
+                    <li><em>Presence Penalty</em> &mdash; Encourages the model to bring up new topics.</li>
+                    <li><em>Max Tokens</em> &mdash; Limits the maximum length of the model's response.</li>
+                    <li><em>Seed</em> &mdash; Set a fixed number for reproducible responses, or leave at zero for random.</li>
                 </ul>
             </li>
             <li><strong>Tools</strong> &mdash; Enable or disable web search and URL reading.</li>
-            <li><strong>System Prompt</strong> &mdash; Set a custom system prompt that is sent with every request to guide the model's behavior.</li>
             <li><strong>System</strong> &mdash; View storage information, delete all chats, or reset the app to its default state (clears all settings, credentials, and conversations).</li>
         </ul>
 
