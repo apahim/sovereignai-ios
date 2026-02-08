@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Manual - SovereignAI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1d1d1f;
+            background: #fff;
+            line-height: 1.7;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+        h1 { font-size: 2em; font-weight: 700; margin-bottom: 4px; }
+        .updated { color: #86868b; margin-bottom: 40px; font-size: 0.9em; }
+        h2 { font-size: 1.15em; font-weight: 600; margin-top: 32px; margin-bottom: 8px; }
+        p { color: #424245; margin-bottom: 12px; }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        li { color: #424245; margin-bottom: 4px; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e5e5; }
+        footer { margin-top: 48px; color: #86868b; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Manual</h1>
+        <p class="updated">SovereignAI for iOS</p>
+
+        <h2>Getting Started</h2>
+        <p>When you first open SovereignAI, you will be guided through a short onboarding flow:</p>
+        <ul>
+            <li><strong>Server URL</strong> &mdash; Enter the base URL of your OpenAI-compatible server (for example, <code>http://192.168.1.10:11434</code> for a local Ollama instance).</li>
+            <li><strong>Authentication</strong> &mdash; Choose how the app should authenticate with your server (see Authentication Methods below).</li>
+            <li><strong>Test Connection</strong> &mdash; Tap the test button to verify the app can reach your server and retrieve the list of available models.</li>
+            <li><strong>Select a Model</strong> &mdash; Pick the model you want to use from the list returned by your server.</li>
+        </ul>
+        <p>Once setup is complete, you are taken to the chat screen and can start a conversation immediately.</p>
+
+        <h2>Authentication Methods</h2>
+        <p>SovereignAI supports four authentication options. Choose the one that matches your server configuration:</p>
+        <ul>
+            <li><strong>None</strong> &mdash; No credentials are sent. Use this for local servers that do not require authentication.</li>
+            <li><strong>API Key Header</strong> &mdash; Sends an API key in the request header. Enter your key during setup; it is stored securely in the iOS Keychain.</li>
+            <li><strong>Bearer Token</strong> &mdash; Sends a bearer token in the <code>Authorization</code> header. Enter your token during setup; it is stored in the iOS Keychain.</li>
+            <li><strong>OpenID Connect (OIDC)</strong> &mdash; Uses the device authorization flow. The app displays a code and a URL; open the URL in a browser, enter the code, and sign in with your identity provider. Tokens are stored in the iOS Keychain and refreshed automatically.</li>
+        </ul>
+
+        <h2>Chatting</h2>
+        <p>Type your message in the input field at the bottom of the screen and tap send. The assistant's response streams in token by token as it is generated.</p>
+        <ul>
+            <li><strong>Thinking indicator</strong> &mdash; While the model is processing, a thinking indicator is displayed so you know the server is working.</li>
+            <li><strong>Markdown rendering</strong> &mdash; Assistant responses are rendered with full Markdown support, including headings, bold, italic, lists, and links.</li>
+            <li><strong>Code blocks</strong> &mdash; Fenced code blocks are syntax-highlighted and include a copy button so you can quickly copy code to the clipboard.</li>
+        </ul>
+
+        <h2>Message Actions</h2>
+        <p>Long-press (or right-click on iPad) any message to open the context menu with the following actions:</p>
+        <ul>
+            <li><strong>Copy</strong> &mdash; Copy the message text to the clipboard.</li>
+            <li><strong>Edit</strong> &mdash; Available on your own messages. Edit the text and resend it; the conversation continues from the edited message.</li>
+            <li><strong>Regenerate Response</strong> &mdash; Ask the model to generate a new response to the preceding message.</li>
+            <li><strong>Delete</strong> &mdash; Remove a single message from the conversation.</li>
+            <li><strong>Delete &amp; Following</strong> &mdash; Remove the selected message and every message after it.</li>
+        </ul>
+
+        <h2>Tools</h2>
+        <p>SovereignAI includes two built-in tools that the model can use during a conversation:</p>
+        <ul>
+            <li><strong>Web Search</strong> &mdash; Searches the web using DuckDuckGo. When the model decides a web search would help answer your question, it performs a search automatically and uses the results to inform its response.</li>
+            <li><strong>URL Reading</strong> &mdash; Fetches and reads the content of a web page. The model can use this to pull in information from a specific URL.</li>
+        </ul>
+        <p>Both tools are enabled by default. You can enable or disable them in Settings &gt; Tools. When a tool is used, the sources appear as an expandable section below the assistant's message so you can review what was retrieved.</p>
+
+        <h2>Managing Chats</h2>
+        <p>The session list shows all your conversations. From here you can:</p>
+        <ul>
+            <li><strong>Create a new chat</strong> &mdash; Tap the new-chat button to start a fresh conversation.</li>
+            <li><strong>Delete a chat</strong> &mdash; Swipe left on a session to reveal the delete action.</li>
+            <li><strong>Search</strong> &mdash; Use the search bar to find chats by title or message content. Results match across all conversations.</li>
+        </ul>
+
+        <h2>Exporting Chats</h2>
+        <p>Swipe right on a session in the session list to reveal the export action. Choose a format:</p>
+        <ul>
+            <li><strong>Markdown</strong> &mdash; Exports the conversation as a <code>.md</code> file with proper formatting.</li>
+            <li><strong>JSON</strong> &mdash; Exports the raw conversation data as a <code>.json</code> file.</li>
+            <li><strong>Plain Text</strong> &mdash; Exports a simple text transcript.</li>
+        </ul>
+        <p>After choosing a format, the iOS share sheet opens so you can save the file, send it via AirDrop, or share it with any other app.</p>
+
+        <h2>Settings</h2>
+        <p>Open Settings from the session list. Settings are organized into the following groups:</p>
+        <ul>
+            <li><strong>Server</strong> &mdash; Change your server URL, authentication method, or credentials. Test the connection at any time.</li>
+            <li><strong>Model</strong> &mdash; Select a different model and adjust sampling parameters:
+                <ul>
+                    <li><em>Temperature</em> &mdash; Controls randomness. Lower values produce more focused responses; higher values produce more creative ones.</li>
+                    <li><em>Top-p</em> &mdash; Limits the token pool to a cumulative probability threshold.</li>
+                    <li><em>Max tokens</em> &mdash; Sets the maximum length of the model's response.</li>
+                    <li><em>Context length</em> &mdash; Controls how many previous messages are included in each request.</li>
+                </ul>
+            </li>
+            <li><strong>Tools</strong> &mdash; Enable or disable web search and URL reading.</li>
+            <li><strong>System Prompt</strong> &mdash; Set a custom system prompt that is sent with every request to guide the model's behavior.</li>
+            <li><strong>System</strong> &mdash; View storage information, delete all chats, or reset the app to its default state (clears all settings, credentials, and conversations).</li>
+        </ul>
+
+        <div class="back">
+            <a href="index.html">&larr; Back to SovereignAI</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Amador Pahim Segundo. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
