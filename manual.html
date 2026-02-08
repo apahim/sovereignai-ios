@@ -44,7 +44,7 @@
         <p>SovereignAI supports four authentication options. Choose the one that matches your server configuration:</p>
         <ul>
             <li><strong>None</strong> &mdash; No credentials are sent. Use this for local servers that do not require authentication.</li>
-            <li><strong>API Key Header</strong> &mdash; Sends an API key in the request header. Enter your key during setup; it is stored securely in the iOS Keychain.</li>
+            <li><strong>API Key Header</strong> &mdash; Sends an API key in a custom request header. You can configure the header name (defaults to <code>X-Api-Key</code>). The key is stored securely in the iOS Keychain.</li>
             <li><strong>Bearer Token</strong> &mdash; Sends a bearer token in the <code>Authorization</code> header. Enter your token during setup; it is stored in the iOS Keychain.</li>
             <li><strong>OpenID Connect (OIDC)</strong> &mdash; Uses the device authorization flow. The app displays a code and a URL; open the URL in a browser, enter the code, and sign in with your identity provider. Tokens are stored in the iOS Keychain and refreshed automatically.</li>
         </ul>
@@ -52,7 +52,7 @@
         <h2>Chatting</h2>
         <p>Type your message in the input field at the bottom of the screen and tap send. The assistant's response streams in token by token as it is generated.</p>
         <ul>
-            <li><strong>Thinking indicator</strong> &mdash; While the model is processing, a thinking indicator is displayed so you know the server is working.</li>
+            <li><strong>Thinking indicator</strong> &mdash; While the model is generating a response, a shimmer animation is displayed. If the model outputs reasoning tokens (e.g. <code>&lt;think&gt;</code> blocks), the reasoning is shown in a collapsible "Reasoning" section you can expand to read.</li>
             <li><strong>Markdown rendering</strong> &mdash; Assistant responses are rendered with full Markdown support, including headings, bold, italic, lists, and links.</li>
             <li><strong>Code blocks</strong> &mdash; Fenced code blocks are syntax-highlighted and include a copy button so you can quickly copy code to the clipboard.</li>
         </ul>
@@ -61,7 +61,7 @@
         <p>Long-press any message to open its context menu. The following actions are available:</p>
         <ul>
             <li><strong>Copy</strong> &mdash; Copy the message text to the clipboard.</li>
-            <li><strong>Edit</strong> &mdash; Available on your own messages only. Edit the text and resend it; the conversation continues from the edited message.</li>
+            <li><strong>Edit</strong> &mdash; Available on your own messages only. Edit the text and resend it; the conversation continues from the edited message. Edited messages are marked with an "(edited)" indicator.</li>
             <li><strong>Regenerate Response</strong> &mdash; Available on your own messages only. Ask the model to generate a new response.</li>
             <li><strong>Delete</strong> &mdash; Remove a single message from the conversation.</li>
             <li><strong>Delete &amp; Following</strong> &mdash; Remove the selected message and every message after it.</li>
@@ -80,6 +80,7 @@
         <ul>
             <li><strong>Create a new chat</strong> &mdash; Tap the new-chat button to start a fresh conversation.</li>
             <li><strong>Delete a chat</strong> &mdash; Swipe left on a session to reveal the delete action.</li>
+            <li><strong>Clear a chat</strong> &mdash; Open a conversation and tap the settings icon in the toolbar to access per-chat options, including clearing all messages from the current chat.</li>
             <li><strong>Search</strong> &mdash; Use the search bar to find chats by title or message content. Results match across all conversations.</li>
         </ul>
 
@@ -107,9 +108,12 @@
                     <li><em>Seed</em> &mdash; Set a fixed number for reproducible responses, or leave at zero for random.</li>
                 </ul>
             </li>
-            <li><strong>Tools</strong> &mdash; Enable or disable web search and URL reading.</li>
+            <li><strong>Tools</strong> &mdash; Enable or disable web search and URL reading. When web search is enabled, you can also adjust the maximum number of search results (1&ndash;10, defaults to 5).</li>
             <li><strong>System</strong> &mdash; View storage information, delete all chats, or reset the app to its default state (clears all settings, credentials, and conversations).</li>
         </ul>
+
+        <h2>Appearance</h2>
+        <p>SovereignAI supports both light and dark mode. The app automatically follows your device's system appearance setting.</p>
 
         <div class="back">
             <a href="index.html">&larr; Back to SovereignAI</a>
