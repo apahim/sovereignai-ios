@@ -79,18 +79,14 @@
         <p>You should see <code>mistral-nemo:12b</code> in the output.</p>
 
         <h2>4. Find your server address</h2>
-        <p>Ollama listens on port <code>11434</code> by default. The address you enter in SovereignAI depends on where Ollama is running:</p>
-        <ul>
-            <li><strong>Same machine (macOS/Linux/Windows)</strong> &mdash; <code>http://localhost:11434</code></li>
-            <li><strong>Another machine on your network</strong> &mdash; <code>http://&lt;ip-address&gt;:11434</code> (for example, <code>http://192.168.1.42:11434</code>)</li>
-        </ul>
-        <p>If Ollama is running on a different machine, you may need to set the <code>OLLAMA_HOST</code> environment variable to <code>0.0.0.0</code> before starting the server so it accepts connections from other devices:</p>
+        <p>Ollama listens on port <code>11434</code> by default. Since SovereignAI runs on your iPhone or iPad, you need the local network IP address of the machine running Ollama (for example, <code>http://192.168.1.42:11434</code>). Your iOS device and the machine running Ollama must be on the same network.</p>
+        <p>You also need to set the <code>OLLAMA_HOST</code> environment variable to <code>0.0.0.0</code> before starting the server so it accepts connections from other devices on the network:</p>
         <pre><code>OLLAMA_HOST=0.0.0.0 ollama serve</code></pre>
 
         <h2>5. Configure SovereignAI</h2>
         <p>Open SovereignAI on your iPhone or iPad. If this is your first launch, the onboarding wizard will guide you. Otherwise, go to Settings &gt; Server.</p>
         <ol>
-            <li><strong>Server URL</strong> &mdash; Enter your Ollama address (e.g. <code>http://192.168.1.42:11434</code>). Your iOS device and the machine running Ollama must be on the same network.</li>
+            <li><strong>Server URL</strong> &mdash; Enter your Ollama address (e.g. <code>http://192.168.1.42:11434</code>).</li>
             <li><strong>Authentication</strong> &mdash; Select <strong>None</strong>. Ollama does not require authentication by default.</li>
             <li><strong>Test Connection</strong> &mdash; Tap the test button. You should see a success message and the list of available models.</li>
             <li><strong>Select Model</strong> &mdash; Choose <strong>mistral-nemo:12b</strong> from the list.</li>
