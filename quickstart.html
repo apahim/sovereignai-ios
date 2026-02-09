@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quickstart - SovereignAI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1d1d1f;
+            background: #fff;
+            line-height: 1.7;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+        h1 { font-size: 2em; font-weight: 700; margin-bottom: 4px; }
+        .updated { color: #86868b; margin-bottom: 40px; font-size: 0.9em; }
+        h2 { font-size: 1.15em; font-weight: 600; margin-top: 32px; margin-bottom: 8px; }
+        h3 { font-size: 1em; font-weight: 600; margin-top: 16px; margin-bottom: 4px; }
+        p { color: #424245; margin-bottom: 12px; }
+        ul, ol { padding-left: 20px; margin-bottom: 12px; }
+        li { color: #424245; margin-bottom: 4px; }
+        code {
+            font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.9em;
+            background: #f5f5f7;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f5f5f7;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 12px;
+        }
+        pre code { background: none; padding: 0; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .back { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e5e5; }
+        footer { margin-top: 48px; color: #86868b; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quickstart</h1>
+        <p class="updated">Get up and running with SovereignAI and Ollama</p>
+
+        <p>This guide walks you through installing Ollama, downloading a model, and connecting SovereignAI to it. The whole process requires just a few commands.</p>
+
+        <h2>1. Install Ollama</h2>
+
+        <h3>macOS</h3>
+        <p>Download Ollama from <a href="https://ollama.com/download">ollama.com/download</a> and drag it to your Applications folder. Alternatively, install with Homebrew:</p>
+        <pre><code>brew install ollama</code></pre>
+
+        <h3>Linux (Ubuntu / Debian)</h3>
+        <pre><code>curl -fsSL https://ollama.com/install.sh | sh</code></pre>
+
+        <h3>Linux (Fedora)</h3>
+        <pre><code>curl -fsSL https://ollama.com/install.sh | sh</code></pre>
+
+        <h3>Windows</h3>
+        <p>Download the installer from <a href="https://ollama.com/download">ollama.com/download</a> and run it.</p>
+
+        <h2>2. Start Ollama and pull the model</h2>
+
+        <p>Open a terminal (or PowerShell on Windows) and start the Ollama server:</p>
+        <pre><code>ollama serve</code></pre>
+        <p>On macOS and Windows, the server starts automatically when you open the Ollama app. You can skip this step if it is already running.</p>
+
+        <p>In a new terminal window, pull the Mistral Nemo 12B model:</p>
+        <pre><code>ollama pull mistral-nemo:12b</code></pre>
+        <p>This downloads the model. The download is roughly 7 GB, so it may take a while depending on your connection.</p>
+
+        <h2>3. Verify the server is working</h2>
+        <p>Confirm Ollama is serving and the model is available:</p>
+        <pre><code>ollama list</code></pre>
+        <p>You should see <code>mistral-nemo:12b</code> in the output.</p>
+
+        <h2>4. Find your server address</h2>
+        <p>Ollama listens on port <code>11434</code> by default. The address you enter in SovereignAI depends on where Ollama is running:</p>
+        <ul>
+            <li><strong>Same machine (macOS/Linux/Windows)</strong> &mdash; <code>http://localhost:11434</code></li>
+            <li><strong>Another machine on your network</strong> &mdash; <code>http://&lt;ip-address&gt;:11434</code> (for example, <code>http://192.168.1.42:11434</code>)</li>
+        </ul>
+        <p>If Ollama is running on a different machine, you may need to set the <code>OLLAMA_HOST</code> environment variable to <code>0.0.0.0</code> before starting the server so it accepts connections from other devices:</p>
+        <pre><code>OLLAMA_HOST=0.0.0.0 ollama serve</code></pre>
+
+        <h2>5. Configure SovereignAI</h2>
+        <p>Open SovereignAI on your iPhone or iPad. If this is your first launch, the onboarding wizard will guide you. Otherwise, go to Settings &gt; Server.</p>
+        <ol>
+            <li><strong>Server URL</strong> &mdash; Enter your Ollama address (e.g. <code>http://192.168.1.42:11434</code>). Your iOS device and the machine running Ollama must be on the same network.</li>
+            <li><strong>Authentication</strong> &mdash; Select <strong>None</strong>. Ollama does not require authentication by default.</li>
+            <li><strong>Test Connection</strong> &mdash; Tap the test button. You should see a success message and the list of available models.</li>
+            <li><strong>Select Model</strong> &mdash; Choose <strong>mistral-nemo:12b</strong> from the list.</li>
+        </ol>
+
+        <p>That's it. Start a new chat and send a message.</p>
+
+        <h2>Troubleshooting</h2>
+        <ul>
+            <li><strong>Connection refused</strong> &mdash; Make sure <code>ollama serve</code> is running and that you are using the correct IP address and port. If Ollama is on a remote machine, ensure <code>OLLAMA_HOST=0.0.0.0</code> is set.</li>
+            <li><strong>Model not listed</strong> &mdash; Run <code>ollama list</code> to verify the model was downloaded. If not, run <code>ollama pull mistral-nemo:12b</code> again.</li>
+            <li><strong>Slow responses</strong> &mdash; Mistral Nemo 12B works best with a dedicated GPU. On CPU-only machines, responses will be slower.</li>
+            <li><strong>Firewall issues</strong> &mdash; Ensure port <code>11434</code> is not blocked by your firewall. On Fedora, you can open it with <code>sudo firewall-cmd --add-port=11434/tcp</code>.</li>
+        </ul>
+
+        <div class="back">
+            <a href="index.html">&larr; Back to SovereignAI</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Amador Pahim Segundo. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
