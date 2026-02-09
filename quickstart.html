@@ -63,27 +63,28 @@
         <h3>Windows</h3>
         <p>Download the installer from <a href="https://ollama.com/download">ollama.com/download</a> and run it.</p>
 
-        <h2>2. Start Ollama and pull the model</h2>
+        <h2>2. Pull the model and start the server</h2>
 
-        <p>Open a terminal (or PowerShell on Windows) and start the Ollama server:</p>
-        <pre><code>ollama serve</code></pre>
-        <p>On macOS and Windows, the server starts automatically when you open the Ollama app. You can skip this step if it is already running.</p>
-
-        <p>In a new terminal window, pull the Mistral Nemo 12B model:</p>
+        <p>Open a terminal (or PowerShell on Windows) and download the Mistral Nemo 12B model:</p>
         <pre><code>ollama pull mistral-nemo:12b</code></pre>
-        <p>This downloads the model. The download is roughly 7 GB, so it may take a while depending on your connection.</p>
+        <p>This is roughly 7 GB and may take a while depending on your connection.</p>
 
-        <h2>3. Verify the server is working</h2>
-        <p>Confirm Ollama is serving and the model is available:</p>
-        <pre><code>ollama list</code></pre>
-        <p>You should see <code>mistral-nemo:12b</code> in the output.</p>
-
-        <h2>4. Find your server address</h2>
-        <p>Ollama listens on port <code>11434</code> by default. Since SovereignAI runs on your iPhone or iPad, you need the local network IP address of the machine running Ollama (for example, <code>http://192.168.1.42:11434</code>). Your iOS device and the machine running Ollama must be on the same network.</p>
-        <p>You also need to set the <code>OLLAMA_HOST</code> environment variable to <code>0.0.0.0</code> before starting the server so it accepts connections from other devices on the network:</p>
+        <p>Then start the server so it accepts connections from your phone:</p>
         <pre><code>OLLAMA_HOST=0.0.0.0 ollama serve</code></pre>
+        <p>On Windows (PowerShell), set the variable first:</p>
+        <pre><code>$env:OLLAMA_HOST="0.0.0.0"; ollama serve</code></pre>
 
-        <h2>5. Configure SovereignAI</h2>
+        <h2>3. Find your server address</h2>
+        <p>SovereignAI needs the local network IP of the machine running Ollama. Your iOS device and the machine must be on the same network.</p>
+        <p>To find your IP address:</p>
+        <ul>
+            <li><strong>macOS</strong> &mdash; System Settings &gt; Wi-Fi &gt; Details, or run <code>ipconfig getifaddr en0</code></li>
+            <li><strong>Linux</strong> &mdash; <code>hostname -I</code></li>
+            <li><strong>Windows</strong> &mdash; <code>ipconfig</code> and look for the IPv4 address</li>
+        </ul>
+        <p>Your server address will be <code>http://&lt;your-ip&gt;:11434</code> (for example, <code>http://192.168.1.42:11434</code>).</p>
+
+        <h2>4. Configure SovereignAI</h2>
         <p>Open SovereignAI on your iPhone or iPad. If this is your first launch, the onboarding wizard will guide you. Otherwise, go to Settings &gt; Server.</p>
         <ol>
             <li><strong>Server URL</strong> &mdash; Enter your Ollama address (e.g. <code>http://192.168.1.42:11434</code>).</li>
@@ -96,7 +97,7 @@
 
         <h2>Troubleshooting</h2>
         <ul>
-            <li><strong>Connection refused</strong> &mdash; Make sure <code>ollama serve</code> is running and that you are using the correct IP address and port. If Ollama is on a remote machine, ensure <code>OLLAMA_HOST=0.0.0.0</code> is set.</li>
+            <li><strong>Connection refused</strong> &mdash; Make sure <code>ollama serve</code> is running with <code>OLLAMA_HOST=0.0.0.0</code> and that you are using the correct IP address and port.</li>
             <li><strong>Model not listed</strong> &mdash; Run <code>ollama list</code> to verify the model was downloaded. If not, run <code>ollama pull mistral-nemo:12b</code> again.</li>
             <li><strong>Slow responses</strong> &mdash; Mistral Nemo 12B works best with a dedicated GPU. On CPU-only machines, responses will be slower.</li>
             <li><strong>Firewall issues</strong> &mdash; Ensure port <code>11434</code> is not blocked by your firewall. On Fedora, you can open it with <code>sudo firewall-cmd --add-port=11434/tcp</code>.</li>
