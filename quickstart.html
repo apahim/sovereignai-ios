@@ -65,9 +65,9 @@
 
         <h2>2. Pull the model and start the server</h2>
 
-        <p>Open a terminal (or PowerShell on Windows) and download the Mistral Nemo 12B model:</p>
-        <pre><code>ollama pull mistral-nemo:12b</code></pre>
-        <p>This is roughly 7 GB and may take a while depending on your connection.</p>
+        <p>Open a terminal (or PowerShell on Windows) and download the Mistral Nemo 12B Instrict model:</p>
+        <pre><code>ollama pull mistral-nemo:12b-instruct-2407-q4_K_M</code></pre>
+        <p>This is roughly 7.5 GB and may take a while depending on your connection.</p>
 
         <p>Then start the server so it accepts connections from your phone:</p>
         <pre><code>OLLAMA_HOST=0.0.0.0 ollama serve</code></pre>
@@ -90,7 +90,7 @@
             <li><strong>Server URL</strong> &mdash; Enter your Ollama address (e.g. <code>http://192.168.1.42:11434</code>).</li>
             <li><strong>Authentication</strong> &mdash; Select <strong>None</strong>. Ollama does not require authentication by default.</li>
             <li><strong>Test Connection</strong> &mdash; Tap the test button. You should see a success message and the list of available models.</li>
-            <li><strong>Select Model</strong> &mdash; Choose <strong>mistral-nemo:12b</strong> from the list.</li>
+            <li><strong>Select Model</strong> &mdash; Choose <strong>mistral-nemo:12b-instruct-2407-q4_K_M</strong> from the list.</li>
         </ol>
 
         <p>That's it. Start a new chat and send a message.</p>
@@ -99,7 +99,7 @@
         <ul>
             <li><strong>Connection refused</strong> &mdash; Make sure <code>ollama serve</code> is running with <code>OLLAMA_HOST=0.0.0.0</code> and that you are using the correct IP address and port.</li>
             <li><strong>Model not listed</strong> &mdash; Run <code>ollama list</code> to verify the model was downloaded. If not, run <code>ollama pull mistral-nemo:12b</code> again.</li>
-            <li><strong>Slow responses</strong> &mdash; Mistral Nemo 12B works best with a dedicated GPU. On CPU-only machines, responses will be slower.</li>
+            <li><strong>Slow responses</strong> &mdash; Mistral Nemo 12B Instruct works best with a dedicated GPU. On CPU-only machines, responses will be slower.</li>
             <li><strong>Firewall issues</strong> &mdash; Ensure port <code>11434</code> is not blocked by your firewall. On Fedora, you can open it with <code>sudo firewall-cmd --add-port=11434/tcp</code>.</li>
         </ul>
 
