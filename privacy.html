@@ -47,7 +47,7 @@
         <h2>Data sent to your AI server</h2>
         <p>When you send a message, the app transmits your conversation to the server endpoint you configured. This may include:</p>
         <ul>
-            <li>Your messages and the conversation history (within the context length you set)</li>
+            <li>Your messages and the conversation history (within the context length you set). If your message contains <code>#label</code> references, messages from other conversations with that label are also included in the request.</li>
             <li>A system prompt</li>
             <li>Your selected model name and sampling parameters</li>
             <li>Authentication credentials (API key or token) in request headers</li>

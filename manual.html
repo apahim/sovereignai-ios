@@ -53,8 +53,12 @@
         <p>Type your message in the input field at the bottom of the screen and tap send. The assistant's response streams in token by token as it is generated.</p>
         <ul>
             <li><strong>Thinking indicator</strong> &mdash; While the model is generating a response, a shimmer animation is displayed. If the model outputs reasoning tokens (e.g. <code>&lt;think&gt;</code> blocks), the reasoning is shown in a collapsible "Reasoning" section you can expand to read.</li>
-            <li><strong>Markdown rendering</strong> &mdash; Assistant responses are rendered with full Markdown support, including headings, bold, italic, lists, and links.</li>
+            <li><strong>Markdown rendering</strong> &mdash; Assistant responses are rendered with full Markdown support, including headings, bold, italic, strikethrough, lists, links, blockquotes, tables, and task lists.</li>
             <li><strong>Code blocks</strong> &mdash; Fenced code blocks are syntax-highlighted and include a copy button so you can quickly copy code to the clipboard.</li>
+            <li><strong>LaTeX &amp; math</strong> &mdash; Mathematical expressions are rendered using Unicode symbols. Display math is supported with <code>\[...\]</code> and <code>$$...$$</code> delimiters; inline math uses <code>\(...\)</code>. Math blocks appear in a styled container with a copy button.</li>
+            <li><strong>Tables</strong> &mdash; Markdown tables (pipe-delimited) are rendered as styled vertical cards with headers and cell values.</li>
+            <li><strong>Blockquotes</strong> &mdash; Nested blockquotes are shown with left border indicators and progressively reduced opacity for each nesting level.</li>
+            <li><strong>Task lists</strong> &mdash; Lines beginning with <code>- [ ]</code> or <code>- [x]</code> are displayed as checkbox items.</li>
         </ul>
 
         <h2>Message Actions</h2>
@@ -72,17 +76,18 @@
         <ul>
             <li><strong>Web Search</strong> &mdash; Searches the web using DuckDuckGo. When the model decides a web search would help answer your question, it performs a search automatically and uses the results to inform its response.</li>
             <li><strong>URL Reading</strong> &mdash; Fetches and reads the content of a web page. The model can use this to pull in information from a specific URL.</li>
-            <li><strong>Image Search</strong> &mdash; Searches DuckDuckGo for images, diagrams, and charts. When the model needs visual content, it performs an image search automatically and displays the results as a thumbnail gallery below its response. Tap any thumbnail to view the full-size image and its source.</li>
+            <li><strong>Image Search</strong> &mdash; Searches DuckDuckGo for images, diagrams, and charts. When the model needs visual content, it performs an image search automatically and displays the results as a scrollable thumbnail gallery below its response. Tap any thumbnail to open a detail view showing the full-size image, its title, pixel dimensions, and a link to the source page.</li>
         </ul>
         <p>All three tools are enabled by default. You can enable or disable them in Settings &gt; Tools. When a search tool is used, the sources appear as an expandable section below the assistant's message. Image search results appear as a scrollable row of thumbnails that can be tapped for a full-size view with a link to the source page.</p>
 
         <h2>Managing Chats</h2>
-        <p>The session list shows all your conversations. From here you can:</p>
+        <p>The session list shows all your conversations. Each session row displays color-coded label dots (up to five, with an overflow count if there are more) so you can see at a glance which labels are applied.</p>
         <ul>
             <li><strong>Create a new chat</strong> &mdash; Tap the new-chat button to start a fresh conversation.</li>
             <li><strong>Delete a chat</strong> &mdash; Swipe left on a session to reveal the delete action.</li>
+            <li><strong>Session menu</strong> &mdash; Tap the ellipsis (&hellip;) button on a session row to open a menu where you can add a new label or remove existing labels directly from the session list.</li>
             <li><strong>Clear a chat</strong> &mdash; Open a conversation and tap the settings icon in the toolbar to access per-chat options, including clearing all messages from the current chat.</li>
-            <li><strong>Search</strong> &mdash; Use the search bar to find chats by title or message content. Results match across all conversations.</li>
+            <li><strong>Search</strong> &mdash; Use the search bar to find chats by title, label, or message content. Results match across all conversations.</li>
         </ul>
 
         <h2>Exporting Chats</h2>
@@ -93,6 +98,21 @@
             <li><strong>Plain Text</strong> &mdash; Exports a simple text transcript.</li>
         </ul>
         <p>After choosing a format, the iOS share sheet opens so you can save the file, send it via AirDrop, or share it with any other app.</p>
+
+        <h2>Labels</h2>
+        <p>Labels let you organize your conversations with color-coded tags. Each label is automatically assigned a consistent color derived from its name, so the same label always appears in the same color.</p>
+
+        <p><strong>Adding and removing labels.</strong> Open a conversation and tap the settings icon to access label management. From there you can type a new label name and add it, or remove any existing label. Labels from your other conversations are shown as suggestions so you can reuse them with a single tap. You can also add or remove labels directly from the session list using the ellipsis (&hellip;) menu on each session row.</p>
+
+        <p><strong>Label bar.</strong> When a conversation has labels, they appear as a row of colored capsules at the top of the chat view. Tap a label capsule to open chat settings; long-press it to insert the label (prefixed with <code>#</code>) into the input field.</p>
+
+        <p><strong>Cross-chat context with #.</strong> When you include a <code>#label</code> reference in a message (for example, <code>#work</code>), SovereignAI loads the conversations from all other chats that have that label and includes them as context in the request sent to the model. This lets the model draw on information from related conversations when answering. You can reference multiple labels in a single message. The referenced content is subject to the context window limit, so if the combined conversations are too large, only the most recent messages are included.</p>
+
+        <p><strong>Autocomplete with #.</strong> While typing a message, type <code>#</code> followed by characters to see matching label suggestions above the input field. Tap a suggestion to insert it. This provides a quick way to add label references without having to remember exact label names.</p>
+
+        <p><strong>Filtering by label.</strong> At the top of the session list, a horizontal bar shows all labels used across your conversations. Tap one or more labels to filter the list and show only conversations that have at least one of the selected labels.</p>
+
+        <p><strong>Label dots.</strong> Each session in the list shows up to five small colored dots representing its labels. If a session has more than five labels, a count (e.g., &ldquo;+2&rdquo;) is displayed next to the dots.</p>
 
         <h2>Settings</h2>
         <p>Open Settings from the session list. Settings are organized into the following groups:</p>
