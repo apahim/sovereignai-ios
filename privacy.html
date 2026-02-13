@@ -55,7 +55,7 @@
         <p>You control which server receives this data. The app supports self-hosted servers (Ollama, vLLM, llama.cpp, etc.) as well as third-party API providers. Review the privacy policy of any third-party provider you connect to.</p>
 
         <h2>Web search, URL fetching, and image search</h2>
-        <p>If you enable the web search or image search tools, the app sends search queries to DuckDuckGo and may fetch content or image thumbnails from URLs returned in search results. If you enable the URL fetching tool, the app fetches content from URLs the model requests. These features are enabled by default and can be turned off at any time in settings.</p>
+        <p>If you enable the web search or image search tools, the app sends search queries to DuckDuckGo and may fetch content or image thumbnails from URLs returned in search results. If you enable the URL fetching tool, the app fetches content from URLs the model requests, including PDF documents. PDF files are downloaded and their text is extracted on-device using Apple's PDFKit framework. These features are enabled by default and can be turned off at any time in settings.</p>
 
         <h2>OIDC authentication</h2>
         <p>If you configure OpenID Connect authentication, the app communicates with your OIDC provider to obtain and refresh tokens. Tokens are stored in the iOS Keychain.</p>
